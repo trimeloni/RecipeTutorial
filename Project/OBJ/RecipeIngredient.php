@@ -44,7 +44,7 @@ class RecipeIngredient
     }
 
     // IngredientId
-    public function getIngredientId
+    public function getIngredientId()
     {
         return $this->ingredientId;
     }
