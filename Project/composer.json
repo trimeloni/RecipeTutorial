@@ -1,8 +1,7 @@
 {
     "require": {
         "doctrine/orm": "*",
-        "peej/tonic": "dev-master",
-	
+        "peej/tonic": "dev-master"
     },
     "autoload": {
         "psr-0": {"": "src/"}
