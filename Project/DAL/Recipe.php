@@ -1,51 +1,58 @@
 <?php
 // DAL
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+namespace DAL;
+
+// BootStrap to Doctrine
+require_once "DALBase.php";
 
 /**
  * Description of Recipe
  *
  * @author Atrimeloni
  */
-class Recipe {
-    //put your code here
+class Recipe extends DALBase
+{
+    public function GetRecipes()
+    {
+        $repository = $this->entityManager->getRepository('OBJ\Recipe');
+        $objects = $repository->findAll();
 
-    public static function GetRecipes()
-    {
-        
+        return $objects;
     }
     
-    public static function GetRecipeByRecipeId($recipeId)
+    public function GetRecipeByRecipeId($recipeId)
     {
-        
-        
+        $object = $this->entityManager->find('OBJ\Recipe', $recipeId); // by PK
+        return $object;
     }
 
-    public static function UpdateRecipe($recipe)
+    public function UpdateRecipe($recipe)
     {
+        $this->entityManager->persist($recipe);
+        $this->entityManager->flush();
         
+        return $recipe;
     }
     
-    public static function CreateRecipe($recipe)
+    public function CreateRecipe($recipe)
     {
+        $this->entityManager->persist($recipe);
+        $this->entityManager->flush();
         
+        return $recipe;
     }
     
-    public static function DeleteRecipeByRecipeId($recipeId)
+    public function DeleteRecipeByRecipeId($recipeId)
     {
+        $object = $this->entityManager->find('OBJ\Recipe', $recipeId); // by PK
+        $this->entityManager->remove($object);
+        $this->entityManager->flush();
         
+        return;
     }
     
     
     
 }
     
-    
-    
-}
-
-?>

@@ -1,19 +1,13 @@
 <?php
 
-@include(__DIR__.'/DALAutoloader.php');
-        
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  * Description of Recipe
  *
  * @author Atrimeloni
+ * *uri /recipe
  */
-class Recipe {
-    //put your code here
+class Recipe extends Tonic\Resource  {  
+
 
     public function GetRecipes()
     {
@@ -22,8 +16,10 @@ class Recipe {
     
     public function GetRecipe($RecipeId)
     {
-        $recipe = new DAL\Recipe();
+        $recipeDAL = new DAL\Recipe();
+        $recipe = $recipeDAL->GetRecipeByRecipeId($RecipeId);
         
+        return $recipe;
     }
     
     
@@ -48,6 +44,3 @@ class Recipe {
     
     
     
-}
-
-?>

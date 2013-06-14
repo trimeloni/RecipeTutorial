@@ -1,10 +1,15 @@
 {
     "require": {
         "doctrine/orm": "*",
-        "peej/tonic": "dev-master"
+        "peej/tonic": "dev-master",
+        "phpunit/phpunit": "3.7.*"
     },
     "autoload": {
-        "psr-0": {"": "src/"}
+        "psr-0": {
+            "BLL": "./",
+            "DAL": "./",
+            "OBJ": "./"
+        }
     }
 }
 

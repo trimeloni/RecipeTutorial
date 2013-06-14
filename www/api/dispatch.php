@@ -2,9 +2,10 @@
 
 $pathToProject = '../../Project';
 
+// Is using the composer autoloader overkill?
 if (@include(__DIR__.$pathToProject.'/vendor/peej/tonic/src/Tonic/Autoloader.php')) { // use Tonic autoloader
     #new Tonic\Autoloader('myNamespace'); // add another namespace
-} elseif (!@include(__DIR__.'/../vendor/autoload.php')) { // use Composer autoloader
+} elseif (!@include(__DIR__.$pathToProject.'/vendor/autoload.php')) { // use Composer autoloader
     die('Could not find autoloader');
 }
 
@@ -12,7 +13,7 @@ if (@include(__DIR__.$pathToProject.'/vendor/peej/tonic/src/Tonic/Autoloader.php
 
 $config = array(
     'load' => array(
-        __DIR__.$pathToProject'/BLL/*.php'
+        __DIR__.$pathToProject.'/BLL/*.php'
 
     ),
     #'mount' => array('Tyrell' => '/nexus'), // mount in example resources at URL /nexus
