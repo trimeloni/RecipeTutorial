@@ -19,13 +19,16 @@ class Recipe
     protected $name;
 
     /** @Column(type="integer") **/
-    protected $prepTime;
+    public $prepTime;
 
     /** @Column(type="integer") **/
-    protected $cookTime;
+    public $cookTime;
 
 
-
+    public function JSonEncode()
+    {
+        return json_encode($this);
+    }
 
     //
     // Getters/Setters

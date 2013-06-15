@@ -1,19 +1,24 @@
 <?php
 
-$pathToProject = '../../Project';
+$pathToProject = '/../../Project';
 
 // Is using the composer autoloader overkill?
-if (@include(__DIR__.$pathToProject.'/vendor/peej/tonic/src/Tonic/Autoloader.php')) { // use Tonic autoloader
+/*
+if (@include(__DIR__.$pathToProject.'/vendor/peej/tonic/src/Tonic/Autoloader.phpx')) { // use Tonic autoloader
     #new Tonic\Autoloader('myNamespace'); // add another namespace
 } elseif (!@include(__DIR__.$pathToProject.'/vendor/autoload.php')) { // use Composer autoloader
-    die('Could not find autoloader');
+    die('Could not find autoloader' . __DIR__.$pathToProject);
 }
+*/
 
+if (!@include(__DIR__.$pathToProject.'/vendor/autoload.php')) { // use Composer autoloader
+    die('Could not find autoloader' . __DIR__.$pathToProject);
+}
 
 
 $config = array(
     'load' => array(
-        __DIR__.$pathToProject.'/BLL/*.php'
+        __DIR__.$pathToProject.'/BLL/*.api.php'
 
     ),
     #'mount' => array('Tyrell' => '/nexus'), // mount in example resources at URL /nexus
@@ -34,7 +39,7 @@ try {
     $resource = $app->getResource($request);
 
     #echo $resource; die;
-
+    
     $response = $resource->exec();
 
 } catch (Tonic\NotFoundException $e) {
