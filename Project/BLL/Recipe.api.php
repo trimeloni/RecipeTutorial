@@ -33,8 +33,7 @@ class Recipe extends APIBase  {
         $mapper = new Adminomatic\AutoMapper\Mapper();
         $recipeObject = $mapper->Map(new OBJ\Recipe(),$this->request->data );
         
-        $recipeDAL = new DAL\Recipe();
-        
+        $recipeDAL = new DAL\Recipe();        
         $newRecipe = $recipeDAL->CreateRecipe($recipeObject);
 
         return new Tonic\Response(Tonic\Response::CREATED,$newRecipe,array('content-type'=>'application/json'));
@@ -46,24 +45,13 @@ class Recipe extends APIBase  {
      */
     public function UpdateRecipe()
     {
-        //echo("\n\nUpdate Recipe\n");
-        //print_r($this->request->data);
-        
-        
-        
         $mapper = new \Adminomatic\AutoMapper\Mapper();
         $recipeObject = $mapper->Map(new OBJ\Recipe(),$this->request->data );
-        //print_r($recipeObject);
-        
 
-        
         $recipeDAL = new DAL\Recipe();
         $updatedRecipe = $recipeDAL->UpdateRecipe($recipeObject);
-
-        
         
         return new Tonic\Response(Tonic\Response::ACCEPTED,$updatedRecipe,array('content-type'=>'application/json'));
-        
         
     }
 }
@@ -78,6 +66,8 @@ class Recipe extends APIBase  {
  */
 class Recipes extends APIBase  {  
     /**
+     * @param integer $recipeId
+     * @return \Tonic\Response
      * @method GET
      */
     public function GetRecipe($recipeId)
@@ -89,10 +79,18 @@ class Recipes extends APIBase  {
         return new Tonic\Response(Tonic\Response::OK,$recipe,array('content-type'=>'application/json'));
     }
     
-    
-    public function DeleteRecipe()
+    /**
+     * @param integer $recipeId
+     * @return \Tonic\Response
+     * @method DELETE
+     */
+    public function DeleteRecipe($recipeId)
     {
+        $recipeDAL = new DAL\Recipe();
+        $recipe = $recipeDAL->DeleteRecipeByRecipeId($recipeId);
         
+        //return $recipe;
+        return new Tonic\Response(Tonic\Response::OK,"OK");
     }
     
     
@@ -100,5 +98,4 @@ class Recipes extends APIBase  {
 
 
 
-    
-?>    
+
