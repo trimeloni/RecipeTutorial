@@ -5,8 +5,8 @@ use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
 
 // autoload the name spaces for doctrine
-//require_once "../vendor/autoload.php";
-include_once __DIR__."/../vendor/autoload.php";
+require_once __DIR__."/../vendor/autoload.php";
+//include_once __DIR__."/../vendor/autoload.php";
 
 
 /**

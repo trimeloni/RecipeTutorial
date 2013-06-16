@@ -28,11 +28,14 @@ class Recipe extends DALBase
     }
 
     public function UpdateRecipe($recipe)
-    {
-        $this->entityManager->persist($recipe);
+    { 
+        // get the entry from the database (by id) and merge it to the new values
+        $updatedRecipe = $this->entityManager->merge($recipe);
+
+        // perform the update to the database
         $this->entityManager->flush();
         
-        return $recipe;
+        return $updatedRecipe;
     }
     
     public function CreateRecipe($recipe)

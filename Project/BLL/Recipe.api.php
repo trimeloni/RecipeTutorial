@@ -40,6 +40,32 @@ class Recipe extends APIBase  {
         return new Tonic\Response(Tonic\Response::CREATED,$newRecipe,array('content-type'=>'application/json'));
     }
     
+    /**
+     * @method PUT
+     * @json
+     */
+    public function UpdateRecipe()
+    {
+        //echo("\n\nUpdate Recipe\n");
+        //print_r($this->request->data);
+        
+        
+        
+        $mapper = new \Adminomatic\AutoMapper\Mapper();
+        $recipeObject = $mapper->Map(new OBJ\Recipe(),$this->request->data );
+        //print_r($recipeObject);
+        
+
+        
+        $recipeDAL = new DAL\Recipe();
+        $updatedRecipe = $recipeDAL->UpdateRecipe($recipeObject);
+
+        
+        
+        return new Tonic\Response(Tonic\Response::ACCEPTED,$updatedRecipe,array('content-type'=>'application/json'));
+        
+        
+    }
 }
 
 
@@ -63,23 +89,6 @@ class Recipes extends APIBase  {
         return new Tonic\Response(Tonic\Response::OK,$recipe,array('content-type'=>'application/json'));
     }
     
-    
-    /**
-     * @method PUT
-     */
-    public function UpdateRecipe($recipeId)
-    {
-        $mapper = new Adminomatic\AutoMapper\Mapper();
-        $recipeObject = $mapper->Map(new OBJ\Recipe(),$this->request->data );
-        
-        $recipeDAL = new DAL\Recipe();
-        
-        $updatedRecipe = $recipeDAL->UpdateRecipe($recipeObject);
-
-        return new Tonic\Response(Tonic\Response::ACCEPTED,$updatedRecipe,array('content-type'=>'application/json'));
-        
-        
-    }
     
     public function DeleteRecipe()
     {
