@@ -1,2 +1,4 @@
 /nbproject/private/
+/Project/vendor/
 mysql.pid
+php_errors.log

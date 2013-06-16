@@ -1,10 +1,8 @@
 <?php
 
-//use DAL;
+//include_once("APIBase.php");
 
-#echo ""
-//require_once __DIR__."/../vendor/autoload.php";
-//require_once "../vendor/autoload.php";
+//namespace BLL;
 
 /**
  * Description of Recipe
@@ -13,10 +11,9 @@
  * @uri /recipe
  */
 class Recipe extends Tonic\Resource  {  
-
+//class Recipe extends APIBase {
      /**
      * @method CUSTOM
-     * @provides text/html
      */
     function exampleMethod() {
 	return 'Hello (CUSTOM) World ';
@@ -24,38 +21,16 @@ class Recipe extends Tonic\Resource  {
     
     /**
      * @method GET
-     * @provides text/html
      */
     public function GetRecipes()
     {
         
-        echo "\nin get recipes";
-        //echo "\n". __DIR__ . "/../vendor/autoload.php";
-        
-        //try
-        //{
         $recipeDAL = new DAL\Recipe();
-        //$recipe = $recipeDAL->GetRecipes();
-        $recipe = $recipeDAL->GetRecipeByRecipeId(1);
-        //}
-        //catch (Exception $e)
-        //{
-        //    echo "exception";
-        //    print_r($e);
-        //}
-        //*/
-        //echo "exiting get recipes";
-        
-        //return "Hello GetRecipes";
-        //return json_encode($recipe);
-        return $recipe->JSonEncode();
-            
-        //echo "1";
-        //$recipeDAL = new DAL\Recipe();
-        //echo "2";
-        //$recipe = $recipeDAL->GetRecipes();
-        //echo "2";
+        $recipe = $recipeDAL->GetRecipes();
+
         //return $recipe;
+        //return json_encode($recipe);
+        return new Tonic\Response(Tonic\Response::OK,$recipe,array('content-type'=>'application/json'));
     }
     
     public function GetRecipe($RecipeId)

@@ -1,5 +1,7 @@
 <?php
 
+//use DAL;
+
 $pathToProject = '/../../Project';
 
 // Is using the composer autoloader overkill?
@@ -36,10 +38,10 @@ $request = new Tonic\Request();
 
 try {
 
+    // Can throw not found exception
     $resource = $app->getResource($request);
-
-    #echo $resource; die;
     
+    // Can throw Tonic\Exception
     $response = $resource->exec();
 
 } catch (Tonic\NotFoundException $e) {
@@ -50,10 +52,17 @@ try {
     $response->wwwAuthenticate = 'Basic realm="My Realm"';
 
 } catch (Tonic\Exception $e) {
+    echo "THREW A TONIC EXCEPTION";
     $response = new Tonic\Response($e->getCode(), $e->getMessage());
 }
 
-#echo $response;
+//print_r($response);
+
+// encode output
+if ($response->contentType == 'application/json') {
+    //echo "about to encode";
+    $response->body = json_encode($response->body);
+}
 
 $response->output();
 

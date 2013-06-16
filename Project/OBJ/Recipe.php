@@ -7,16 +7,11 @@ namespace OBJ;
  **/
 class Recipe
 {
-    //
-    // Private variable setup
-    //
-
-
     /** @Id @Column(name="recipeId",type="integer") @GeneratedValue **/
-    protected $recipeId;
+    public $recipeId;
 
     /** @Column(type="string") **/
-    protected $name;
+    public $name;
 
     /** @Column(type="integer") **/
     public $prepTime;
@@ -29,7 +24,7 @@ class Recipe
     {
         return json_encode($this);
     }
-
+/*
     //
     // Getters/Setters
     //
@@ -72,7 +67,7 @@ class Recipe
     {
         $this->cookTime = $time;
     }
-
+*/
 
 }
 
