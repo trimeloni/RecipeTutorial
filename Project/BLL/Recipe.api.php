@@ -1,24 +1,15 @@
 <?php
 
-//include_once("APIBase.php");
+include_once("APIBase.php");
 
-//namespace BLL;
 
 /**
- * Description of Recipe
+ * Work with the collection of recipes
  *
  * @author Atrimeloni
  * @uri /recipe
  */
-class Recipe extends Tonic\Resource  {  
-//class Recipe extends APIBase {
-     /**
-     * @method CUSTOM
-     */
-    function exampleMethod() {
-	return 'Hello (CUSTOM) World ';
-    }
-    
+class Recipe extends APIBase  {  
     /**
      * @method GET
      */
@@ -32,24 +23,46 @@ class Recipe extends Tonic\Resource  {
         //return json_encode($recipe);
         return new Tonic\Response(Tonic\Response::OK,$recipe,array('content-type'=>'application/json'));
     }
+
+    /**
+     * @method POST
+     */
+    public function AddRecipe()
+    {
+        
+    }
     
-    public function GetRecipe($RecipeId)
+}
+
+
+
+/**
+ * Work with an individual Recipe
+ *
+ * @author Atrimeloni
+ * @uri /recipe/{recipeId}
+ */
+class Recipes extends APIBase  {  
+    /**
+     * @method GET
+     */
+    public function GetRecipe($recipeId)
     {
         $recipeDAL = new DAL\Recipe();
-        $recipe = $recipeDAL->GetRecipeByRecipeId($RecipeId);
+        $recipe = $recipeDAL->GetRecipeByRecipeId($recipeId);
         
-        return $recipe;
+        //return $recipe;
+        return new Tonic\Response(Tonic\Response::OK,$recipe,array('content-type'=>'application/json'));
     }
     
     
-    public function CreateRecipe()
-    {
-        
-    }
-    
+    /**
+     * @method PUT
+     */
     public function UpdateRecipe()
     {
-        // translate the jso into the object
+        
+        
         
     }
     
@@ -60,6 +73,8 @@ class Recipe extends Tonic\Resource  {
     
     
 }
-    
+
+
+
     
 ?>    

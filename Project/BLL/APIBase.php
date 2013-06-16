@@ -14,10 +14,14 @@ class APIBase extends Tonic\Resource {
                 $request->data = json_decode($request->data);
             }
         });
+        
+        /*
         $this->after(function ($response) {
             $response->contentType = "application/json";
             $response->body = json_encode($response->body);
         });
+         
+         */
     }
 }
 
