@@ -26,10 +26,18 @@ class Recipe extends APIBase  {
 
     /**
      * @method POST
+     * @json
      */
     public function AddRecipe()
-    {
+    {        
+        $mapper = new Adminomatic\AutoMapper\Mapper();
+        $recipeObject = $mapper->Map(new OBJ\Recipe(),$this->request->data );
         
+        $recipeDAL = new DAL\Recipe();
+        
+        $newRecipe = $recipeDAL->CreateRecipe($recipeObject);
+
+        return new Tonic\Response(Tonic\Response::CREATED,$newRecipe,array('content-type'=>'application/json'));
     }
     
 }
@@ -59,9 +67,16 @@ class Recipes extends APIBase  {
     /**
      * @method PUT
      */
-    public function UpdateRecipe()
+    public function UpdateRecipe($recipeId)
     {
+        $mapper = new Adminomatic\AutoMapper\Mapper();
+        $recipeObject = $mapper->Map(new OBJ\Recipe(),$this->request->data );
         
+        $recipeDAL = new DAL\Recipe();
+        
+        $updatedRecipe = $recipeDAL->UpdateRecipe($recipeObject);
+
+        return new Tonic\Response(Tonic\Response::ACCEPTED,$updatedRecipe,array('content-type'=>'application/json'));
         
         
     }

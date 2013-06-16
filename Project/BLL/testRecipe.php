@@ -2,6 +2,15 @@
 
 require_once "../vendor/autoload.php";
 
+$mapper = new Adminomatic\AutoMapper\Mapper();
+
+
+
+die("done");
+
+
+
+
 // Recipe DAL Object
 $recipeDAL = new DAL\Recipe();
 
