@@ -7,55 +7,14 @@ namespace OBJ;
  **/
 class Review
 {
-    //
-    // Private variable setup
-    //
-
-
     /** @Id @Column(name="reviewId",type="integer") @GeneratedValue **/
-    protected $reviewId;
+    public $reviewId;
 
     /** @Column(type="integer") **/
-    protected $recipeId;
+    public $recipeId;
 
     /** @Column(type="string") **/
-    protected $review;
-
-
-
-    //
-    // Getters/Setters
-    //
-
-    // ReviewId
-    public function getReviewId()
-    {
-        return $this->reviewId;
-    }
-
-    // RecipeId
-    public function getRecipeId()
-    {
-    	return $this->recipeId;
-    }
-
-    public function setRecipeId($recipeId)
-    {
-	$this->recipeId = $recipeId;
-    }
-
-
-    // Name
-    public function getReview()
-    {
-        return $this->review;
-    }
-
-    public function setReview($review)
-    {
-        $this->review = $review;
-    }
-
+    public $review;
 
 }
 
