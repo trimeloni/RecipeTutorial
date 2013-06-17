@@ -3,8 +3,51 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "c48781e36d0fb3d93446d0c396059abf",
+    "hash": "57a5189db673d3bb45c1fb8ec2635bb3",
     "packages": [
+        {
+            "name": "Adminomatic/AutoMapper",
+            "version": "v0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/trimeloni/PHPAutoMapper.git",
+                "reference": "v0.1.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/trimeloni/PHPAutoMapper/zipball/v0.1.1",
+                "reference": "v0.1.1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Adminomatic\\AutoMapper": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jan Kockrow"
+                }
+            ],
+            "description": "PHP adaption of Jimmy Bogard's famous AutoMapper for .NET to automaticially map the properties of one object to another",
+            "homepage": "https://github.com/trimeloni/PHPAutoMapper/wiki",
+            "keywords": [
+                "automapper",
+                "php"
+            ],
+            "support": {
+                "source": "https://github.com/trimeloni/PHPAutoMapper/tree/master",
+                "issues": "https://github.com/trimeloni/PHPAutoMapper/issues"
+            },
+            "time": "2013-06-17 14:22:39"
+        },
         {
             "name": "doctrine/common",
             "version": "2.3.0",
