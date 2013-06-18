@@ -1,4 +1,7 @@
 /* app css stylesheet */
+.recipes {
+  list-style: none;
+}
 
 .menu {
   list-style: none;

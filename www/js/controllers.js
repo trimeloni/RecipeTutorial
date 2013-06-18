@@ -3,9 +3,15 @@
 /* Controllers */
 
 angular.module('myRecipeApp.controllers', [])
-  .controller('RecipeListCtrl', [function() {
+  .controller('RecipeListCtrlx', [function() {
 
   }])
   .controller('RecipeItemCtrl', [function() {
 
   }]);
+  
+function RecipeListCtrl($scope,RecipeList ) {
+  print("hello");
+  $scope.recipes = RecipeList.query();
+}
+
