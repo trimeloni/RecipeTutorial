@@ -2,10 +2,10 @@
 
 /* Controllers */
 
-angular.module('myRecipeApp.controllers', []).
-  controller('MyCtrl1', [function() {
+angular.module('myRecipeApp.controllers', [])
+  .controller('RecipeListCtrl', [function() {
 
   }])
-  .controller('MyCtrl2', [function() {
+  .controller('RecipeItemCtrl', [function() {
 
   }]);
