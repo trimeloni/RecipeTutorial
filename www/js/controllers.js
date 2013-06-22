@@ -6,7 +6,7 @@ function RecipeListCtrl($scope,GetRecipeList ) {
 }
 
 function RecipeItemCtrl($scope, $routeParams, GetRecipeItem ) {
-  $scope.recipe = GetRecipeItem.query({recipeId: $routeParams.recipeId} );
+  $scope.recipe = GetRecipeItem.get({recipeId: $routeParams.recipeId});
 }
 
 /*
