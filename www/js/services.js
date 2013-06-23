@@ -2,10 +2,10 @@
 
 /* Services */
 angular.module('myRecipeAppServices', ['ngResource'])
-        .factory('GetRecipeList', function($resource){
+        .factory('RecipeList', function($resource){
            return $resource('api/recipe');
         })
-        .factory('GetRecipeItem', function($resource){
+        .factory('RecipeItem', function($resource){
            return $resource('api/recipe/:recipeId');
         });
         

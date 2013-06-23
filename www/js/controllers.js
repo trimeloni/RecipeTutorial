@@ -1,13 +1,27 @@
 'use strict';
 
 /* Controllers */
-function RecipeListCtrl($scope,GetRecipeList ) {
-  $scope.recipes = GetRecipeList.query();
+function RecipeListCtrl($scope,RecipeList ) {
+  $scope.recipes = RecipeList.query();
 }
 
-function RecipeItemCtrl($scope, $routeParams, GetRecipeItem ) {
-  $scope.recipe = GetRecipeItem.get({recipeId: $routeParams.recipeId});
+function RecipeItemCtrl($scope, $routeParams, RecipeItem ) {
+  $scope.recipe = RecipeItem.get({recipeId: $routeParams.recipeId});
 }
+
+function SaveRecipeItemCtrl($scope, RecipeList ) {
+  $scope.SaveRecipe = function(){
+    console.log("did this run?");
+    var newRecipe = new RecipeList();
+    newRecipe.name = $scope.name;
+    newRecipe.prepTime = $scope.prepTime;
+    newRecipe.cookTime = $scope.cookTime;
+    
+    newRecipe.$save();
+  }
+}
+
+
 
 /*
 function PhoneDetailCtrl($scope, $routeParams, Phone) {
