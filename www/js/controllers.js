@@ -5,19 +5,33 @@ function RecipeListCtrl($scope,RecipeList ) {
   $scope.recipes = RecipeList.query();
 }
 
-function RecipeItemCtrl($scope, $routeParams, RecipeItem ) {
+function RecipeItemCtrl($scope, $routeParams, $location, RecipeItem ) {
   $scope.recipe = RecipeItem.get({recipeId: $routeParams.recipeId});
+  
+  $scope.deleteRecipe = function() {
+      console.log("delete");
+      
+      // Delete the item
+      RecipeItem.delete({recipeId: $routeParams.recipeId}, function(){
+        // redirect after deleted
+        $location.path("/");
+      });
+      
+      
+  }
 }
 
-function SaveRecipeItemCtrl($scope, RecipeList ) {
+function SaveRecipeItemCtrl($scope, $location, RecipeList ) {
   $scope.SaveRecipe = function(){
-    console.log("did this run?");
+    
+    // Save the new recipe
     var newRecipe = new RecipeList();
     newRecipe.name = $scope.name;
     newRecipe.prepTime = $scope.prepTime;
-    newRecipe.cookTime = $scope.cookTime;
-    
-    newRecipe.$save();
+    newRecipe.cookTime = $scope.cookTime;    
+    newRecipe.$save(function(item, putResponseHeaders) {
+        $location.path('/');
+    });    
   }
 }
 

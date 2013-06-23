@@ -1,6 +1,14 @@
-<input type="text" ng-model="name" placeholder="Enter a name here"><br/>
-<input type="text" ng-model="prepTime" placeholder="prep time"><br/>
-<input type="text" ng-model="cookTime" placeholder="cook time"><br/>
+<div class="row-fluid">
+    <div class="span2">
+        <form ng-submit="SaveRecipe()">
+            <input type="text" name="name" ng-model="name" placeholder="Enter a name here" required><br/>
+            <input type="text" name="preopTime" ng-model="prepTime" placeholder="prep time" required><br/>
+            <input type="text" name="cookTime" ng-model="cookTime" placeholder="cook time" ><br/>
 
-<button type="button" ng-click="SaveRecipe()">Click Me!</button>
+            <span class="pull-right">
+                <button type="submit" class="btn btn-primary pull-right"><i class="icon-plus"></i> Save</button>
+            </span>
+        </form>
+    </div>
+</div>
 
