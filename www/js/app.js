@@ -2,7 +2,7 @@
 
 
 // Declare app level module which depends on filters, and services
-angular.module('myRecipeApp', ['myRecipeAppServices']).
+angular.module('myRecipeApp', ['myRecipeAppServices','myRecipeApp.directives']).
   config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/recipe', {templateUrl: 'partials/RecipeList.html', controller: 'RecipeListCtrl'});
     $routeProvider.when('/recipe/add', {templateUrl: 'partials/RecipeAdd.html', controller: 'SaveRecipeItemCtrl'});

@@ -21,7 +21,37 @@ function RecipeItemCtrl($scope, $routeParams, $location, RecipeItem ) {
   }
 }
 
-function SaveRecipeItemCtrl($scope, $location, RecipeList ) {
+function SaveRecipeItemCtrl($scope, $location, RecipeList, IngredientList ) {
+  
+  //
+  // Load names of ingredients from the Db
+  //
+  $scope.ingredientNamesInDb = [];
+  IngredientList.query(function(item, putResponseHeaders) {
+    item.forEach(function(element, index, array){
+        $scope.ingredientNamesInDb.push(element.name);
+    });
+  });
+      
+  //
+  // hold an array of ingredient names
+  //
+  $scope.ingredients = [];
+  
+  $scope.AddIngredient = function()
+  {
+      // TODO: add ability to push more pieces
+      $scope.ingredients.push($scope.ingredientName);
+      
+      // clear the listings
+      $scope.ingredientName = "";
+  };
+  
+  $scope.RemoveIngredient = function()
+  {
+      // TODO: add remove 
+  };
+  
   $scope.SaveRecipe = function(){
     
     // Save the new recipe
@@ -32,7 +62,7 @@ function SaveRecipeItemCtrl($scope, $location, RecipeList ) {
     newRecipe.$save(function(item, putResponseHeaders) {
         $location.path('/');
     });    
-  }
+  };
 }
 
 
